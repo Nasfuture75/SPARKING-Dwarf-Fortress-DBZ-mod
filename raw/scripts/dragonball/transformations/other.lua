@@ -68,7 +68,7 @@ transformations['Wrath State'].ki_mult=function(unit)
 end
 
 transformations['Wrath State'].on_tick=function(unit)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*2000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*200/unit.body.physical_attrs.ENDURANCE.value)
     if(unit.counters.soldier_mood ~= 1) then
         local transformation_funcs=dfhack.script_environment('dragonball/transformation')
         transformation_funcs.transform(unit.id,'Wrath State',false)
@@ -104,11 +104,11 @@ transformations['Kaioken'].ki_mult=function(unit)
 end
 
 transformations['Kaioken'].on_tick=function(unit,tick_count)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*500/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*50/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Kaioken'].cost=function(unit) --how much cost the transformation has, in various ways, for use in AI
-    return 5000/unit.body.physical_attrs.ENDURANCE.value
+    return 500/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Kaioken'].get_name=function(unit)
@@ -130,11 +130,11 @@ transformations['Kaioken x5'].ki_mult=function(unit)
 end
 
 transformations['Kaioken x5'].on_tick=function(unit,tick_count)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*2000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*200/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Kaioken x5'].cost=function(unit) --how much cost the transformation has, in various ways, for use in AI
-    return 10000/unit.body.physical_attrs.ENDURANCE.value
+    return 1000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Kaioken x5'].get_name=function(unit)
@@ -156,11 +156,11 @@ transformations['Kaioken x10'].ki_mult=function(unit)
 end
 
 transformations['Kaioken x10'].on_tick=function(unit,tick_count) --will be done every 10 Dwarf Fortress ticks.
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*5000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*500/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Kaioken x10'].cost=function(unit) --how much cost the transformation has, in various ways, for use in AI
-    return 30000/unit.body.physical_attrs.ENDURANCE.value
+    return 3000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Kaioken x10'].get_name=function(unit)
@@ -182,11 +182,11 @@ transformations['Kaioken x20'].ki_mult=function(unit)
 end
 
 transformations['Kaioken x20'].on_tick=function(unit,tick_count) --will be done every 10 Dwarf Fortress ticks.
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*20000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*2000/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Kaioken x20'].cost=function(unit) --how much cost the transformation has, in various ways, for use in AI
-    return 60000/unit.body.physical_attrs.ENDURANCE.value
+    return 6000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Kaioken x20'].get_name=function(unit)
@@ -213,7 +213,7 @@ end
 
 transformations['Ultra Instinct "Sign"'].on_tick=function(unit,tick_count) --will be done every 10 Dwarf Fortress ticks.
     local god_training=get_god_training(unit)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count,10000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count,1000/unit.body.physical_attrs.ENDURANCE.value)
     god_training.ints[2]=god_training.ints[2]+tick_count
     god_training:save()
 end
@@ -253,11 +253,11 @@ transformations['Ultra Instinct'].ki_type=function(unit)
 end
 
 transformations['Ultra Instinct'].on_tick=function(unit,tick_count) --will be done every 10 Dwarf Fortress ticks.
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*10000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*1000/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Ultra Instinct'].cost=function(unit)
-    return 100000/unit.body.physical_attrs.ENDURANCE.value
+    return 10000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Ultra Instinct'].benefit=function(unit)
@@ -341,7 +341,7 @@ end
 transformations['Golden Form']={}
 
 transformations['Golden Form'].on_tick=function(unit,tick_count) 
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count,10000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count,1000/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Golden Form'].potential_boost=function(unit)
