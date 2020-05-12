@@ -41,6 +41,16 @@ function calculate_max_ki_portions(unit)
     local willpower = (unit.status.current_soul.mental_attrs.WILLPOWER.value+unit.body.physical_attrs.TOUGHNESS.value+unit.status.current_soul.mental_attrs.PATIENCE.value)/3
     local focus = (unit.status.current_soul.mental_attrs.FOCUS.value+unit.status.current_soul.mental_attrs.SPATIAL_SENSE.value+unit.status.current_soul.mental_attrs.KINESTHETIC_SENSE.value+unit.status.current_soul.mental_attrs.ANALYTICAL_ABILITY.value+unit.status.current_soul.mental_attrs.MEMORY.value)/5
     local endurance = (unit.body.physical_attrs.ENDURANCE.value+unit.body.physical_attrs.AGILITY.value+unit.body.physical_attrs.STRENGTH.value)/3
+    --[[ The lines under make an unit's attribute contribution to his ki increase exponentially up to 10x. They're there to
+    conserve the powerlevel scale that was there when ATT_CAP percentages were 10x greater. Unit progression should be ABOUT
+    the same as back then (tested in adventure mode).]]
+    local scaling = 1-(8250/(((willpower+focus+endurance)/50)^2)) -- The terms on the right decrease the higher your attributes get 
+    if scaling > 0 then
+        willpower = willpower*10^scaling
+        focus = focus*10^scaling
+        endurance = endurance*10^scaling
+    end
+    -------------------------------------------
     local boost,multiplier,potential_boost=transformation.get_transformation_boosts(unit.id)
     local spec_boost,spec_multiplier,spec_potential=get_species_boosts(unit)
     return boost+spec_boost,willpower,focus,endurance,multiplier*spec_multiplier,potential_boost+spec_potential
