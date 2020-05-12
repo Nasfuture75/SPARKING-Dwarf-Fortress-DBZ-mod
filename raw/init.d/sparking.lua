@@ -162,7 +162,7 @@ local function combineSoul(unit1,unit2)
     for k,attribute in ipairs(firstUnitSoul.mental_attrs) do
         attribute.value = attribute.value + secondUnitSoul.mental_attrs[k].value
         attribute.max_value = attribute.max_value + secondUnitSoul.mental_attrs[k].max_value
-        if attribute.value < 0 or attribute.value > 2^31-1 then attribute.value = 2^30 end
+        if attribute.value < 0 or attribute.value > 2^31-1 then attribute.value = 2^31-1 end
         if attribute.max_value < 0 or attribute.max_value > 2^31-1 then attribute.max_value = 2^31-1 end
     end
     for _,skill2 in ipairs(secondUnitSoul.skills) do
@@ -195,7 +195,8 @@ local function combineBody(unit1,unit2)
     for k,attribute in ipairs(firstBody.physical_attrs) do
         attribute.value = attribute.value + secondBody.physical_attrs[k].value
         attribute.max_value = attribute.max_value * secondBody.physical_attrs[k].max_value
-	if firstBody.physical_attrs.strength.max_value > 100000 then firstBody.physical_attrs.strength.value = 100000 -- TO PREVENT STRENGTH BUG
+	if firstBody.physical_attrs.STRENGTH.value > 100000 then firstBody.physical_attrs.STRENGTH.value = 100000 -- TO PREVENT STRENGTH BUG
+	if firstBody.physical_attrs.STRENGTH.max_value > 100000 then firstBody.physical_attrs.STRENGTH.max_value > 100000
         if attribute.value < 0 or attribute.value > 2^31-1 then attribute.value = 2^31-1 end
         if attribute.max_value < 0 or attribute.max_value > 2^31-1 then attribute.max_value = 2^31-1 end
     end
