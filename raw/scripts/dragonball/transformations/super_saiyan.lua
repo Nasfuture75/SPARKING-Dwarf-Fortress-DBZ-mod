@@ -38,13 +38,13 @@ end
 
 transformations['Super Saiyan'].on_tick=function(unit,tick_count) --done every [unknown] ticks. tick_count is time since last fire.
     local persist=get_S_cells(unit)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((tick_count*1000/unit.body.physical_attrs.ENDURANCE.value)/math.min(100,math.max(1,persist.ints[1]/1000*tick_count))+0.5)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((tick_count*100/unit.body.physical_attrs.ENDURANCE.value)/math.min(100,math.max(1,persist.ints[1]/1000*tick_count))+0.5)
     persist.ints[1]=persist.ints[1]+10*tick_count+unit.counters2.exhaustion*(tick_count/10)
     persist:save()
 end
 
 transformations['Super Saiyan'].cost=function(unit) --how much cost the transformation has, in various ways, for use in AI
-    return 0.1*math.floor((100000/unit.body.physical_attrs.ENDURANCE.value)/math.min(100,math.max(1,get_S_cells(unit).ints[1]/10000))+0.5)
+    return 0.1*math.floor((10000/unit.body.physical_attrs.ENDURANCE.value)/math.min(100,math.max(1,get_S_cells(unit).ints[1]/10000))+0.5)
 end
 
 transformations['Super Saiyan'].get_name=function(unit)
@@ -167,7 +167,7 @@ transformations['Super Saiyan 2'].potential_boost=function(unit)
 end
 
 transformations['Super Saiyan 2'].on_tick=function(unit,tick_count)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((2500*tick_count)/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((250*tick_count)/unit.body.physical_attrs.ENDURANCE.value)
     local persist=get_S_cells(unit)
     persist.ints[1]=persist.ints[1]+20*tick_count+math.floor(unit.counters2.exhaustion*2*tick_count)
     persist.ints[2]=persist.ints[2]+10*tick_count+math.floor(unit.counters2.exhaustion*tick_count) --literally just super saiyan 2 progress for strengthened and anger forms
@@ -175,7 +175,7 @@ transformations['Super Saiyan 2'].on_tick=function(unit,tick_count)
 end
 
 transformations['Super Saiyan 2'].cost=function(unit)
-    return 25000/unit.body.physical_attrs.ENDURANCE.value
+    return 2500/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Super Saiyan 2'].can_add=function(unit)
@@ -221,11 +221,11 @@ transformations['Super Saiyan 3'].potential_boost=function(unit)
 end
 
 transformations['Super Saiyan 3'].on_tick=function(unit,tick_count)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((15000*tick_count)/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((1500*tick_count)/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Super Saiyan 3'].cost=function(unit)
-    return 150000/unit.body.physical_attrs.ENDURANCE.value
+    return 15000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Super Saiyan 3'].can_add=function(unit)
@@ -248,11 +248,11 @@ transformations['Super Saiyan 4'].potential_boost=function(unit)
 end
 
 transformations['Super Saiyan 4'].on_tick=function(unit,tick_count)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*500/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*50/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Super Saiyan 4'].cost=function(unit)
-    return 5000/unit.body.physical_attrs.ENDURANCE.value
+    return 500/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Super Saiyan 4'].can_add=function(unit)
@@ -271,11 +271,11 @@ transformations['Super Saiyan God'].ki_type=function(unit)
 end
 
 transformations['Super Saiyan God'].on_tick=function(unit,tick_count)
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((500*tick_count)/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor((50*tick_count)/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Super Saiyan God'].cost=function(unit)
-    return 5000/unit.body.physical_attrs.ENDURANCE.value
+    return 500/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Super Saiyan God'].benefit=function(unit)
@@ -303,11 +303,11 @@ transformations['Super Saiyan Blue'].on_tick=function(unit,tick_count)
     god_training:save()
     S_cells.ints[1]=S_cells.ints[1]+tick_count+math.floor(tick_count*unit.counters2.exhaustion/5000)
     S_cells:save()
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*20000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*2000/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Super Saiyan Blue'].cost=function(unit)
-    return 200000/unit.body.physical_attrs.ENDURANCE.value
+    return 20000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Super Saiyan Blue'].benefit=function(unit)
@@ -356,11 +356,11 @@ transformations['Super Saiyan God Super Saiyan 4'].on_tick=function(unit)
     god_training:save()
     S_cells.ints[1]=S_cells.ints[1]+10*tick_count+math.floor(tick_count*unit.counters2.exhaustion/50)
     S_cells:save()
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*20000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(tick_count*2000/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Super Saiyan God Super Saiyan 4'].cost=function(unit)
-    return 100000/unit.body.physical_attrs.ENDURANCE.value
+    return 10000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Super Saiyan God Super Saiyan 4'].benefit=function(unit)
@@ -404,11 +404,11 @@ transformations['Beyond Super Saiyan Blue'].on_tick=function(unit)
     S_cells.ints[1]=S_cells.ints[1]+200+math.floor(unit.counters2.exhaustion/2.5)
     S_cells.ints[2]=S_cells.ints[2]+200+math.floor(unit.counters2.exhaustion/5)
     S_cells:save()
-    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(200000/unit.body.physical_attrs.ENDURANCE.value)
+    unit.counters2.exhaustion=unit.counters2.exhaustion+math.floor(20000/unit.body.physical_attrs.ENDURANCE.value)
 end
 
 transformations['Beyond Super Saiyan Blue'].cost=function(unit)
-    return 200000/unit.body.physical_attrs.ENDURANCE.value
+    return 20000/unit.body.physical_attrs.ENDURANCE.value
 end
 
 transformations['Beyond Super Saiyan Blue'].benefit=function(unit)
