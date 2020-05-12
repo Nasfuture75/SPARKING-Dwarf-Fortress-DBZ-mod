@@ -719,9 +719,10 @@ function onStateChange(op)
         putnamScheduler.start_scheduler()
         eventful.enableEvent(eventful.eventType.UNIT_ATTACK,2)
         eventful.enableEvent(eventful.eventType.UNIT_DEATH,2)
-        for k,v in ipairs(df.global.world.units.all) do
+	-- May be unneccesary now - Nasfuture75
+        --[[for k,v in ipairs(df.global.world.units.all) do
             fixStrengthBug(v)
-        end
+        end]]
         if dfhack.persistent.save({key='DRAGONBALL_WISH_COUNT'}).ints[2]==1 then require('repeat-util').scheduleEvery('shadow dragons',100,'ticks',dfhack.script_environment('dragonball/shadow_dragon').shadow_dragon_loop) end
     end
 end
